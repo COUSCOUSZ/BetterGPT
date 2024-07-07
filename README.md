@@ -1,5 +1,7 @@
 # BetterGPT (WiP) 
 
+- Feel free to contribute. 
+
 - BetterGPT is a chrome extension that aims to add quality of life features to chatGPT.
 
 - The main one is the message list of current chat to scroll fast between messages without doing it manually.
