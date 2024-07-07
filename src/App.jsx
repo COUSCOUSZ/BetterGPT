@@ -10,17 +10,13 @@ function App() {
   const sidebarClass = ".relative.max-w-\\[70\\%\\].rounded-3xl.bg-\\[\\#f4f4f4\\].px-5.py-2\\.5.dark\\:bg-token-main-surface-secondary > div:first-child";
   const sidebarWidth = 'w-[16.25rem]'
   const [toggle, setToggle] = useState(true)
-  const [chatMessages, setChatMessages] = useState();
-  const [sidebar, setSidebar] = useState('w-0');
+  const [chatMessages, setChatMessages] = useState()
+  const [sidebar, setSidebar] = useState('w-0')
+  const [isLoading, setIsLoading] = useState(false)
   const body = document.body
-  const chats = document.getElementsByClassName("relative grow overflow-hidden whitespace-nowrap");
-
-  Array.from(chats).forEach((chat) => {
-    chat.addEventListener("click", (e) => {
-      loadChat();
-      console.log(`clicked ${chat.textContent}`);
-    });
-  });
+  // const chats = document.getElementsByClassName("relative grow overflow-hidden whitespace-nowrap");
+  const chats = document.getElementsByClassName("flex items-center gap-2 p-2");
+  const messageInput = document.getElementsByClassName("flex items-end gap-1.5 md:gap-2")[0];
 
   const loadChat = () => {
     let msgs = null;
@@ -32,7 +28,7 @@ function App() {
           "short": msg.innerHTML.substring(0, 60) + "...", // short version of the message
         }
       });
-  
+
       setChatMessages(msgsConfig);
       console.log(msgsConfig);
     }, 1000);
@@ -41,8 +37,6 @@ function App() {
     //   console.log(elements);
     //   return Array.from(elements);
     // });
-
-    
   }
 
   const toggleOn = () => {
@@ -71,6 +65,14 @@ function App() {
     } else {
       toggleOff();
     }
+    // chat click event
+    Array.from(chats).forEach((chat) => {
+      chat.addEventListener("click", (e) => {
+        loadChat();
+        console.log(`clicked ${chat.textContent}`);
+      });
+    });
+
   }, [])
 
   // on sidebar toggle event
