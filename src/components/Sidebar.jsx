@@ -36,7 +36,7 @@ const Sidebar = ({ sidebar, OnHandleSidebar, OnScrollToMessage, OnLoadChat, chat
                             key={index}
                             ref={el => messageRefs.current[index] = el}
                             onClick={() => handleMessageClick(msg.content)}
-                            className='p-2 rounded m-2 text-sm cursor-pointer bg-token-sidebar-surface-secondary  hover:bg-red-500 '>
+                            className='p-2 rounded m-2 text-sm cursor-pointer bg-token-sidebar-surface-secondary  hover:bg-neutral-500/20 '> 
                             {/* <div className="hover:bg-yellow-500" onClick={()=>handleStarMessage(msg.content)}>
                                 <StarIcon />
                             </div> */}
