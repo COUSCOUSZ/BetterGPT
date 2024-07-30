@@ -84,6 +84,15 @@ function App() {
     }
   }
 
+  const scrollToMessage = (content) => {
+    console.log(content);
+    document.querySelectorAll(sidebarClass).forEach((msg) => {
+      if (msg.innerHTML === content) {
+        msg.scrollIntoView({behavior: "smooth",block:'center'});
+      }
+    });
+  }
+
   return (
     <>
       {/* sidebar container */}
@@ -93,7 +102,13 @@ function App() {
           <img src={chrome.runtime.getURL(logo)} alt="" />
         </div>
         {/* sidebar */}
-        <Sidebar sidebar={sidebar} OnHandleSidebar={handleSidebar} chatMessages={chatMessages} OnLoadChat={loadChat} />
+        <Sidebar
+          sidebar={sidebar}
+          OnHandleSidebar={handleSidebar}
+          OnScrollToMessage={scrollToMessage}
+          chatMessages={chatMessages}
+          OnLoadChat={loadChat}
+        />
 
       </section>
     </>
