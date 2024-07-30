@@ -10,6 +10,8 @@
 
 - Other features are planned : Bookmarking messages & chats , maybe support for other chatbots like claude , gemini ...
 
+- The extension is built using [crxjs.dev](https://crxjs.dev/vite-plugin).
+
 ## Progress & features
 
 - 🔸🔶 Load messages partially added
@@ -18,7 +20,6 @@
 
 ## Run the project 
 
-- The extension is built using [crxjs.dev](https://crxjs.dev/vite-plugin).
 - Run the the command `npm install` to download & install the dependencies .
 - Run the the command `npm run dev` , 
 	> it will run generate the build which is in the `dist` folder. 
