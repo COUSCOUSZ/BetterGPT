@@ -1,5 +1,7 @@
-# BetterGPT (WiP) 
+<img src="src/assets/logo48.png" alt="Chrome developer mode switch" />
 
+ ## BetterGPT (WiP)
+ 
 - Feel free to contribute. 
 
 - BetterGPT is a chrome extension that aims to add quality of life features to chatGPT.
@@ -8,6 +10,11 @@
 
 - Other features are planned : Bookmarking messages & chats , maybe support for other chatbots like claude , gemini ...
 
+## Progress & features
+
+- 🔸🔶 Load messages partially added
+  > ( still have to load when other events occur , eg: when a message is sent ).
+- ✔️ Scroll into message added.
 
 ## Run the project 
 
