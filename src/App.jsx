@@ -26,6 +26,7 @@ function App() {
         return {
           "content": msg.innerHTML, // used to scroll to the message
           "short": msg.innerHTML.substring(0, 60) + "...", // short version of the message
+          "starred": false // starred status
         }
       });
 
@@ -98,7 +99,7 @@ function App() {
       {/* sidebar container */}
       <section id='cmo-sidebar-container' className={`fixed right-0 top-0 ${sidebar} h-screen transition-all`}>
         {/* toggle btn */}
-        <div id='cmo-toggle' onClick={handleSidebar} className='absolute left-0 -translate-x-[4rem] top-1/2 p-2 z-[999999] w-10 rounded cursor-pointer bg-blue-900 text-white'>
+        <div id='cmo-toggle' onClick={handleSidebar} className='absolute left-0 -translate-x-[4rem] top-1/2 p-2 z-[999999] w-10 rounded cursor-pointer bg-gray-900 text-white'>
           <img src={chrome.runtime.getURL(logo)} alt="" />
         </div>
         {/* sidebar */}

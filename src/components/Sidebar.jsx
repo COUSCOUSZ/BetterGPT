@@ -1,12 +1,18 @@
 import { useEffect, useState, useRef } from "react";
 import Button from "./Button"
 import Header from "./Header"
+import { StarIcon } from "@radix-ui/react-icons";
 
-const Sidebar = ({ sidebar, OnHandleSidebar,OnScrollToMessage, OnLoadChat, chatMessages }) => {
+const Sidebar = ({ sidebar, OnHandleSidebar, OnScrollToMessage, OnLoadChat, chatMessages }) => {
     const messageRefs = useRef([]);
+
 
     const handleMessageClick = (content) => {
         OnScrollToMessage(content);
+    }
+
+    const handleStarMessage = (content) => {
+        console.log("starred -->"+content);
     }
 
     useEffect(() => {
@@ -21,7 +27,7 @@ const Sidebar = ({ sidebar, OnHandleSidebar,OnScrollToMessage, OnLoadChat, chatM
     return (
         <>
 
-            <div id='cmo-sidebar' className={`absolute right-0 top-0 ${sidebar} h-screen overflow-y-auto  bg-neutral-900 `}>
+            <div id='cmo-sidebar' className={`absolute right-0 top-0 ${sidebar} h-screen overflow-y-auto bg-token-sidebar-surface-primary`}>
                 <Header />
                 {/* <Button onClick={OnHandleSidebar} size='small'>toggle sidebar</Button> */}
                 {
@@ -29,12 +35,12 @@ const Sidebar = ({ sidebar, OnHandleSidebar,OnScrollToMessage, OnLoadChat, chatM
                         <div
                             key={index}
                             ref={el => messageRefs.current[index] = el}
-                            onClick={()=>handleMessageClick(msg.content)}
-                            className='p-2 rounded m-2 text-sm cursor-pointer bg-token-sidebar-surface-secondary text-neutral-300 hover:bg-neutral-800'>
-                            {msg.short}
-                            <div className="hidden-msg hidden">
-                                {msg.content}
+                            onClick={() => handleMessageClick(msg.content)}
+                            className='p-2 rounded m-2 text-sm cursor-pointer bg-token-sidebar-surface-secondary  hover:bg-red-500 '>
+                            <div className="hover:bg-yellow-500" onClick={()=>handleStarMessage(msg.content)}>
+                                <StarIcon />
                             </div>
+                            {msg.short}
                         </div>
                     ))
                 }
