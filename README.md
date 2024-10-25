@@ -1,6 +1,10 @@
 <img src="src/assets/logo48.png" alt="Chrome developer mode switch" />
 
  ## BetterGPT (WiP)
+
+- ⚠️I will be reworking the following:
+  - Migrate to [wxt](https://wxt.dev/), I was using [crxjs.dev](https://crxjs.dev/vite-plugin).
+  - Rework the way of selecting the dom , previously I was depending on MutationObserver which i find not good for performance and it's kinda tricky. Now I'll be relying on [chrome.webRequest](https://developer.chrome.com/docs/extensions/reference/api/webRequest) API as an event to select the dom whenever a request response is returned.
  
 - Feel free to contribute. 
 
@@ -9,8 +13,6 @@
 - The main one is the message list of current chat to scroll fast between messages without doing it manually.
 
 - Other features are planned : Bookmarking messages & chats , maybe support for other chatbots like claude , gemini ...
-
-- The extension is built using [crxjs.dev](https://crxjs.dev/vite-plugin).
 
 ## Progress & features
 
