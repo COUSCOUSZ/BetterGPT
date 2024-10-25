@@ -4,3 +4,5 @@
 - tabs 
   - messages tabs
   - chat tabs
+-add support for
+  - plugins =>https://chatgpt.com/g/xxxxxxxxxx
