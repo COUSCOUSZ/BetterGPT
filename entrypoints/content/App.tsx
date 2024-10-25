@@ -5,7 +5,7 @@ import logo from "@/assets/logo.svg"
 
 
 const App = () => {
-    const [sidebar, setSidebar] = useState<boolean>(true);
+    const [sidebar, setSidebar] = useState<boolean>(false); 
     
 
     const toggleSidebar=()=>{
