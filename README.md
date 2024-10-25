@@ -23,8 +23,8 @@
 ## Run the project 
 
 - Run the the command `npm install` to download & install the dependencies .
-- Run the the command `npm run dev` , 
-	> it will run generate the build which is in the `dist` folder. 
+- Run the the command `npm run build` , 
+	> it will run generate the build which is `chrome-mv3` in the `.output` folder. 
 - Open Chrome or Edge and navigate to `chrome://extensions`. Make sure to turn on the developer mode switch.
 	<table>
 	<tr>
@@ -37,5 +37,5 @@
 	</tr>
 	</table>
 
-- Drag the`dist` folder into the Extensions Dashboard to install it or click load unpacked And done! You can see the messages on the togglable sidebar **(Scroll to chat message feature is still WiP)**
+- Drag the`chrome-mv3` folder into the Extensions Dashboard to install it or click load unpacked And done! You can see the messages on the togglable sidebar **(Scroll to chat message feature is still WiP)**
 - <img src="md/preview1.png" >

@@ -1,37 +1,34 @@
 {
-  "name": "chatgpt-messages-overview",
+  "name": "better-gpt",
+  "description": "manifest.json description",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox",
+    "compile": "tsc --noEmit",
+    "postinstall": "wxt prepare"
   },
   "dependencies": {
-    "@radix-ui/react-icons": "^1.3.0",
-    "chatgpt-messages-overview": "file:",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
+    "@wxt-dev/auto-icons": "^1.0.2",
+    "better-gpt": "file:",
+    "lucide-react": "^0.453.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "^1.0.14",
-    "@types/node": "^20.14.9",
-    "@types/react": "^18.3.3",
+    "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.2",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
-    "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.4",
-    "vite": "^5.3.1"
+    "@wxt-dev/module-react": "^1.1.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.2",
+    "wxt": "^0.19.11"
   }
 }
