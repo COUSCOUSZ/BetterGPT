@@ -1,10 +1,8 @@
-<img src="src/assets/icon.png" alt="Chrome developer mode switch" />
+<img src="assets/icon.png" alt="Chrome developer mode switch" width="64" />
+
+<img src="md/Preview.png" >
 
  ## BetterGPT (WiP)
-
-- ⚠️I will be reworking the following:
-  - Migrate to [wxt](https://wxt.dev/), I was using [crxjs.dev](https://crxjs.dev/vite-plugin).
-  - Rework the way of selecting the dom , previously I was depending on MutationObserver which i find not good for performance and it's kinda tricky. Now I'll be relying on [chrome.webRequest](https://developer.chrome.com/docs/extensions/reference/api/webRequest) API as an event to select the dom whenever a request response is returned.
  
 - Feel free to contribute. 
 
@@ -16,9 +14,9 @@
 
 ## Progress & features
 
-- 🔸🔶 Load messages partially added
-  > ( still have to load when other events occur , eg: when a message is sent ).
+- ✔️ Load messages
 - ✔️ Scroll into message added.
+- 🔃 Scroll indicator (In progress)
 
 ## Run the project 
 
@@ -38,4 +36,4 @@
 	</table>
 
 - Drag the`chrome-mv3` folder into the Extensions Dashboard to install it or click load unpacked And done! You can see the messages on the togglable sidebar **(Scroll to chat message feature is still WiP)**
-- <img src="md/preview1.png" >
+- <img src="md/Preview.png" >
