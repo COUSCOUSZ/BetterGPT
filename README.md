@@ -12,11 +12,13 @@
 
 - Other features are planned : Bookmarking messages & chats , maybe support for other chatbots like claude , gemini ...
 
+- I'm using [wxt](https://wxt.dev/) library.
+
 ## Progress & features
 
 - ✔️ Load messages
 - ✔️ Scroll into message added.
-- 🔃 Scroll indicator (In progress)
+- 🔃 Scroll indicator (In progress).
 
 ## Run the project 
 
@@ -35,5 +37,5 @@
 	</tr>
 	</table>
 
-- Drag the`chrome-mv3` folder into the Extensions Dashboard to install it or click load unpacked And done! You can see the messages on the togglable sidebar **(Scroll to chat message feature is still WiP)**
+- Drag the`chrome-mv3` folder into the Extensions Dashboard to install it or click load unpacked button And done! You can see the messages on the togglable sidebar.
 - <img src="md/Preview.png" >
