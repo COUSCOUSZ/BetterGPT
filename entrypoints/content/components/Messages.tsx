@@ -18,29 +18,32 @@ const Messages = () => {
         console.log('Setting up event listener in React component')
 
         const handleMessage = (message: any) => {
-            console.log('React component received message:', message)
-            const { type, data } = message
+            console.log('React component received message:', message);
 
-            const messagesDOM = [...document.querySelectorAll(".relative.max-w-\\[70\\%\\].rounded-3xl.bg-\\[\\#f4f4f4\\].px-5.py-2\\.5.dark\\:bg-token-main-surface-secondary > div:first-child")];
-            console.log(messagesDOM);
+            setTimeout(() => {
+                const messagesDOM = [...document.querySelectorAll(".relative.max-w-\\[70\\%\\].rounded-3xl.bg-\\[\\#f4f4f4\\].px-5.py-2\\.5.dark\\:bg-token-main-surface-secondary > div:first-child.whitespace-pre-wrap")];
+                console.log(messagesDOM);
 
-            messagesDOM.forEach((msgDOM, index) => {
-                msgDOM.setAttribute("data-id", index.toString());
-            })
-
-            if (messagesDOM) {
-
-                const messages: MessagesType[] = messagesDOM.map(msg => ({
-                    id: msg.getAttribute("data-id") || "",
-                    content: msg.textContent,
-                    short: msg.textContent?.substring(0, 60),
-                })).filter(msg => msg.short?.trim().length)
-
-                console.log(messages);
+                const theme = localStorage.getItem("theme");
+                console.log(theme);
 
 
-                setResponses(messages)
-            }
+                messagesDOM.forEach((msgDOM, index) => {
+                    msgDOM.setAttribute("data-id", index.toString());
+                });
+
+                if (messagesDOM) {
+                    const messages: MessagesType[] = messagesDOM.map(msg => ({
+                        id: msg.getAttribute("data-id") || "",
+                        content: msg.textContent,
+                        // short: msg.textContent?.substring(0, 60),
+                    })).filter(msg => msg.content?.trim().length);
+
+                    console.log(messages);
+
+                    setResponses(messages);
+                }
+            }, 500);
 
         }
 
@@ -53,17 +56,19 @@ const Messages = () => {
     }, [eventEmitter])
 
 
-
     return (
         <>
-            {responses.map((response, index) => (
-                <div
-                    key={index}
-                    className="p-3 rounded m-2 text-sm cursor-pointer bg-token-sidebar-surface-secondary  hover:bg-neutral-500/20 "
-                    onClick={() => { scrollTo(response.id) }}
-                >
-                    <div>{response.short}</div>
-                </div>
+            {responses.map((response) => (
+                <>
+                    <div
+                        key={response.id}
+                        id={response.id}
+                        className={`p-3 rounded-lg m-2 text-sm cursor-pointer bg-token-sidebar-surface-secondary  hover:bg-neutral-500/20 `}
+                        onClick={() => { scrollTo(response.id) }}
+                    >
+                        <div className="line-clamp-2">{response.content}</div>
+                    </div>
+                </>
             ))}
         </>
     )

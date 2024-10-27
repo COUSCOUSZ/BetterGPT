@@ -2,14 +2,16 @@ import { X } from "lucide-react"
 
 interface Props {
     toggleSidebar: () => void;
-  }
+}
 
-const Header = ({toggleSidebar}:Props) => {
+const Header = ({ toggleSidebar }: Props) => {
     return (
-        <div className="flex gap-1 justify-between items-center p-4 border-b text-token-text-secondary border-neutral-300 dark:border-neutral-800"> 
+        <div className="flex gap-1 justify-between items-center px-5 py-3  border-b text-token-text-secondary border-token-border-light">
             <span className="font-medium">Message overview</span>
-            <X onClick={toggleSidebar} className="cursor-pointer" />  
-        </div> 
+            <div className="cursor-pointer hover:bg-token-main-surface-secondary p-1 rounded" >
+                <X onClick={toggleSidebar} className="w-6" />
+            </div>
+        </div>
     )
 }
 export default Header

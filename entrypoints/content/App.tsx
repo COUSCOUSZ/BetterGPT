@@ -21,13 +21,13 @@ const App = () => {
 
     return (
         <>
-            <div>
+            <div className="relative">
                 {/* sidebar container */}
                 <section id='cmo-sidebar-container' className={`fixed right-0 top-0 ${sidebar ? "w-[20rem]" : "w-0"} h-screen transition-all text-token-text-primary`}> 
                     {/* toggle btn */}
                     <div id='cmo-toggle'
                         onClick={toggleSidebar}
-                        className='absolute left-0 -translate-x-[4rem] top-1/2 p-2 h-10 w-10 z-[999999] rounded cursor-pointer btn-primary'
+                        className='absolute left-0 -translate-x-[4rem] top-1/2 p-2 h-10 w-10 z-[999999] rounded cursor-pointer bg-white shadow-md'
                     >
                         <img src={logo} alt="logo svg" />
                     </div>
