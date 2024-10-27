@@ -1,4 +1,4 @@
-<img src="src/assets/logo48.png" alt="Chrome developer mode switch" />
+<img src="src/assets/icon.png" alt="Chrome developer mode switch" />
 
  ## BetterGPT (WiP)
 
