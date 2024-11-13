@@ -21,7 +21,7 @@ const Messages = () => {
             console.log('React component received message:', message);
 
             setTimeout(() => {
-                const messagesDOM = [...document.querySelectorAll(".relative.max-w-\\[70\\%\\].rounded-3xl.bg-\\[\\#f4f4f4\\].px-5.py-2\\.5.dark\\:bg-token-main-surface-secondary > div:first-child.whitespace-pre-wrap")];
+                const messagesDOM = [...document.querySelectorAll("body > div.relative.flex.h-full.w-full.overflow-hidden.transition-colors.z-0 > div.relative.flex.h-full.max-w-full.flex-1.flex-col.overflow-hidden > main > div.composer-parent.flex.h-full.flex-col.focus-visible\\:outline-0 > div.flex-1.overflow-hidden > div > div > div > div div.whitespace-pre-wrap")];
                 console.log(messagesDOM);
 
                 const theme = localStorage.getItem("theme");
