@@ -9,29 +9,33 @@ const Messages = () => {
     const [responses, setResponses] = useState<MessagesType[]>([]);
     const eventEmitter = useEventEmitter();
 
+    // scroll to a specific message
     const scrollTo = (id: string) => {
-        console.log(id);
+        // console.log(id);
         document.querySelector(`[data-id="${id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" })
     }
 
     useEffect(() => {
         console.log('Setting up event listener in React component')
 
+        // HandleMessage runs when an event is emitted
         const handleMessage = (message: any) => {
             console.log('React component received message:', message);
 
             setTimeout(() => {
+                // Find all message elements in ChatGPT's DOM
                 const messagesDOM = [...document.querySelectorAll("body > div.relative.flex.h-full.w-full.overflow-hidden.transition-colors.z-0 > div.relative.flex.h-full.max-w-full.flex-1.flex-col.overflow-hidden > main > div.composer-parent.flex.h-full.flex-col.focus-visible\\:outline-0 > div.flex-1.overflow-hidden > div > div > div > div div.whitespace-pre-wrap")];
-                console.log(messagesDOM);
+                // console.log(messagesDOM);
 
                 const theme = localStorage.getItem("theme");
-                console.log(theme);
+                // console.log(theme);
 
-
+                // set data-id attribute to each message element for scrollTo()
                 messagesDOM.forEach((msgDOM, index) => {
                     msgDOM.setAttribute("data-id", index.toString());
                 });
 
+                // Convert DOM elements to message objects
                 if (messagesDOM) {
                     const messages: MessagesType[] = messagesDOM.map(msg => ({
                         id: msg.getAttribute("data-id") || "",
@@ -47,13 +51,13 @@ const Messages = () => {
 
         }
 
-        // Subscribe to events
+        // Subscribe to events and cleanup on unmount
         const unsubscribe = eventEmitter.subscribe(handleMessage)
 
         return () => {
             unsubscribe()
         }
-    }, [eventEmitter])
+    }, [])
 
 
     return (

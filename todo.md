@@ -1,8 +1,10 @@
-- load on send message event
-- theme support completion
-- resizable sidebar
-- tabs 
-  - messages tabs
-  - chat tabs
--add support for
-  - plugins =>https://chatgpt.com/g/xxxxxxxxxx
+# Roadmap
+
+### Completed ✅
+- Load messages
+- Scroll into message
+
+### In Progress 🔄
+- Scroll into message response
+- Scroll position indicator
+- Support for ChatGPT plugins (https://chatgpt.com/g/*)

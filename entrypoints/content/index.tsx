@@ -7,10 +7,11 @@ export default defineContentScript({
     matches: ['https://chatgpt.com/*'],
     main(ctx) {
 
-        // Create a simple event emitter for communication
+        // Event emitter for communication
         const eventEmitter = {
             listeners: new Set<(data: any) => void>(),
             emit(data: any) {
+                
                 this.listeners.forEach(listener => listener(data))
             },
             subscribe(listener: (data: any) => void) {
@@ -19,13 +20,12 @@ export default defineContentScript({
             }
         }
 
-        // Listen for messages from background script
-        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-            console.log("hhhh");
+        // Listen for messages from background script, check background.ts
+        chrome.runtime.onMessage.addListener((message) => {
+            // console.log("hhhh");
 
             if (message.type === "API_RESPONSE" || message.type === "API_ERROR") {
-                console.log(message);
-
+                // console.log(message);
                 eventEmitter.emit(message);
             }
         })
@@ -38,7 +38,7 @@ export default defineContentScript({
             onMount: (container) => {
                 // Create a root in the UI container and render a component
                 const root = ReactDOM.createRoot(container);
-                console.log(eventEmitter);
+                // console.log(eventEmitter);
 
                 root.render(
                     <EventEmitterProvider eventEmitter={eventEmitter}>

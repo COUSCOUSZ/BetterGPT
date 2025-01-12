@@ -4,23 +4,24 @@ export default defineBackground({
     // const urlPattern = '*://*/backend-anon/conversation*'
     const urlPattern = '*://*/backend-*/conversation*'
 
-    // listen to web requests
-    chrome.webRequest.onBeforeRequest.addListener(
-      (details) => {
-        console.log('Request started:', details);
-        return { cancel: false }
-      },
-      { urls: [urlPattern] },
-      ['requestBody']
-    )
+    // listen to web requests - isn't necessary
+    // just logging and not blocking/modifying the request ({ cancel: false })
+    // chrome.webRequest.onBeforeRequest.addListener(
+    //   (details) => {
+    //     console.log('Request started:', details);
+    //     return { cancel: false }
+    //   },
+    //   { urls: [urlPattern] },
+    //   ['requestBody']
+    // )
 
     // Listen to completed response
     chrome.webRequest.onCompleted.addListener(
       (details) => {
         console.log('Response completed:', details);
-
-        // send msg to content-script
+        // check if the request came from a regular browser tab
         if (details.tabId > 0) {
+          // Send msg to content-script
           chrome.tabs.sendMessage(details.tabId, {
             type: "API_RESPONSE",
             data: {
@@ -34,13 +35,14 @@ export default defineBackground({
       },
       { urls: [urlPattern] }
     )
-
+    
     // Listen to errors
     chrome.webRequest.onErrorOccurred.addListener(
       (details) => {
         console.error('Request failed:', details)
-
+        // check if the request came from a regular browser tab
         if (details.tabId > 0) {
+          // Send msg to content-script
           chrome.tabs.sendMessage(details.tabId, {
             type: 'API_ERROR',
             data: {
