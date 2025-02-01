@@ -1,6 +1,4 @@
-import { prepare } from "wxt";
 import { useEventEmitter } from "../context/EventEmitterContext";
-import { APIResponse } from "../types/Api";
 import { Messages as MessagesType } from "../types/Messages";
 
 
@@ -24,7 +22,7 @@ const Messages = () => {
 
             setTimeout(() => {
                 // Find all message elements in ChatGPT's DOM
-                const messagesDOM = [...document.querySelectorAll("body > div.relative.flex.h-full.w-full.overflow-hidden.transition-colors.z-0 > div.relative.flex.h-full.max-w-full.flex-1.flex-col.overflow-hidden > main > div.composer-parent.flex.h-full.flex-col.focus-visible\\:outline-0 > div.flex-1.overflow-hidden > div > div > div > div div.whitespace-pre-wrap")];
+                const messagesDOM = [...document.querySelectorAll("body > div.flex.h-full.w-full.flex-col > div > div.relative.flex.h-full.w-full.flex-row.overflow-hidden > div.relative.flex.h-full.max-w-full.flex-1.flex-col.overflow-hidden > main > div.composer-parent.flex.h-full.flex-col.focus-visible\\:outline-0 > div.flex-1.overflow-hidden.\\@container\\/thread > div > div > div > div > article> div > div > div > div > div > div > div > div > div.whitespace-pre-wrap")];
                 // console.log(messagesDOM);
 
                 const theme = localStorage.getItem("theme");

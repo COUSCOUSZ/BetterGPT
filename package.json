@@ -2,7 +2,7 @@
   "name": "better-gpt",
   "description": "manifest.json description",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -19,7 +19,8 @@
     "better-gpt": "file:",
     "lucide-react": "^0.453.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "vite": "^6.0.11"
   },
   "devDependencies": {
     "@types/react": "^18.3.11",
