@@ -1,28 +1,50 @@
 import { useEventEmitter } from "../context/EventEmitterContext";
 import { Messages as MessagesType } from "../types/Messages";
-
-
+import targets from "@/targets";
 
 const Messages = () => {
     const [responses, setResponses] = useState<MessagesType[]>([]);
     const eventEmitter = useEventEmitter();
+    let selector : string | undefined = undefined;
 
     // scroll to a specific message
     const scrollTo = (id: string) => {
         // console.log(id);
-        document.querySelector(`[data-id="${id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" })
-    }
+        document
+            .querySelector(`[data-id="${id}"]`)
+            ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
 
     useEffect(() => {
-        console.log('Setting up event listener in React component')
+        console.log("Setting up event listener in React component");
 
         // HandleMessage runs when an event is emitted
         const handleMessage = (message: any) => {
-            console.log('React component received message:', message);
+            console.log("React component received message:", message);
+
+            function patternToRegex(pattern: string): RegExp {
+                const regexString = pattern
+                    .replace(/\*/g, ".*") // Replace '*' with '.*' to match any characters
+                    .replace(/:\/\//g, "://"); // Keep '://' as is
+                return new RegExp(`^${regexString}$`);
+            }
+    
+            function isUrlMatching(url: string, patterns: string[]): boolean {
+                return patterns.some((pattern) =>
+                    patternToRegex(pattern).test(url)
+                );
+            }
+    
+            selector = targets.find((target) =>
+                isUrlMatching(message.data.url, target.urlPatterns)
+            )?.selector;
+            console.log(selector);
 
             setTimeout(() => {
                 // Find all message elements in ChatGPT's DOM
-                const messagesDOM = [...document.querySelectorAll("body > div.flex.h-full.w-full.flex-col > div > div.relative.flex.h-full.w-full.flex-row.overflow-hidden > div.relative.flex.h-full.max-w-full.flex-1.flex-col.overflow-hidden > main > div.composer-parent.flex.h-full.flex-col.focus-visible\\:outline-0 > div.flex-1.overflow-hidden.\\@container\\/thread > div > div > div > div > article> div > div > div > div > div > div > div > div > div.whitespace-pre-wrap")];
+                const messagesDOM = selector
+                    ? [...document.querySelectorAll(selector)]
+                    : [];
                 // console.log(messagesDOM);
 
                 const theme = localStorage.getItem("theme");
@@ -35,28 +57,28 @@ const Messages = () => {
 
                 // Convert DOM elements to message objects
                 if (messagesDOM) {
-                    const messages: MessagesType[] = messagesDOM.map(msg => ({
-                        id: msg.getAttribute("data-id") || "",
-                        content: msg.textContent,
-                        // short: msg.textContent?.substring(0, 60),
-                    })).filter(msg => msg.content?.trim().length);
+                    const messages: MessagesType[] = messagesDOM
+                        .map((msg) => ({
+                            id: msg.getAttribute("data-id") || "",
+                            content: msg.textContent,
+                            // short: msg.textContent?.substring(0, 60),
+                        }))
+                        .filter((msg) => msg.content?.trim().length);
 
                     console.log(messages);
 
                     setResponses(messages);
                 }
             }, 500);
-
-        }
+        };
 
         // Subscribe to events and cleanup on unmount
-        const unsubscribe = eventEmitter.subscribe(handleMessage)
+        const unsubscribe = eventEmitter.subscribe(handleMessage);
 
         return () => {
-            unsubscribe()
-        }
-    }, [])
-
+            unsubscribe();
+        };
+    }, []);
 
     return (
         <>
@@ -66,13 +88,15 @@ const Messages = () => {
                         key={response.id}
                         id={response.id}
                         className={`p-3 rounded-lg m-2 text-sm cursor-pointer bg-token-sidebar-surface-secondary  hover:bg-neutral-500/20 `}
-                        onClick={() => { scrollTo(response.id) }}
+                        onClick={() => {
+                            scrollTo(response.id);
+                        }}
                     >
                         <div className="line-clamp-2">{response.content}</div>
                     </div>
                 </>
             ))}
         </>
-    )
-}
-export default Messages
+    );
+};
+export default Messages;

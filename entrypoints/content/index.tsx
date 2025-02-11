@@ -1,35 +1,38 @@
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import "@/assets/css/tailwind.css"
-import { EventEmitterProvider } from './context/EventEmitterContext';
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "@/assets/css/tailwind.css";
+import { EventEmitterProvider } from "./context/EventEmitterContext";
+import targets from "@/targets";
 
 export default defineContentScript({
-    matches: ['https://chatgpt.com/*'],
+    matches: targets.map((target) => target.url),
     main(ctx) {
 
         // Event emitter for communication
         const eventEmitter = {
             listeners: new Set<(data: any) => void>(),
             emit(data: any) {
-                
-                this.listeners.forEach(listener => listener(data))
+                this.listeners.forEach((listener) => listener(data));
             },
             subscribe(listener: (data: any) => void) {
-                this.listeners.add(listener)
-                return () => this.listeners.delete(listener)
-            }
-        }
+                this.listeners.add(listener);
+                return () => this.listeners.delete(listener);
+            },
+        };
 
         // Listen for messages from background script, check background.ts
         chrome.runtime.onMessage.addListener((message) => {
             // console.log("hhhh");
 
-            if (message.type === "API_RESPONSE" || message.type === "API_ERROR") {
+            if (
+                message.type === "API_RESPONSE" ||
+                message.type === "API_ERROR"
+            ) {
                 // console.log(message);
                 eventEmitter.emit(message);
             }
-        })
 
+        });
 
 
         const ui = createIntegratedUi(ctx, {
@@ -51,10 +54,10 @@ export default defineContentScript({
                 // Unmount the root & close channel when the UI is removed
                 eventEmitter.listeners.clear();
                 root?.unmount();
-            }
+            },
         });
 
         // Call mount to add the UI to the DOM
         ui.mount();
-    }
-})
+    },
+});

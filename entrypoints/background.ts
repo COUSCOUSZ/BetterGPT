@@ -1,8 +1,9 @@
+import targets from "@/targets"
+
 export default defineBackground({
   main() {
     // match pattern
-    // const urlPattern = '*://*/backend-anon/conversation*'
-    const urlPattern = '*://*/backend-*/conversation*'
+    const urlPatterns = targets.flatMap((target)=>target.urlPatterns);
 
     // listen to web requests - isn't necessary
     // just logging and not blocking/modifying the request ({ cancel: false })
@@ -33,7 +34,7 @@ export default defineBackground({
           })
         }
       },
-      { urls: [urlPattern] }
+      { urls: urlPatterns }
     )
     
     // Listen to errors
@@ -53,7 +54,7 @@ export default defineBackground({
           })
         }
       },
-      { urls: [urlPattern] }
+      { urls: urlPatterns }
     )
 
   },
