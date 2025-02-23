@@ -5,6 +5,10 @@
   <img src="md/Preview.png" style="border-radius:16px" >
 </div>
 
+
+## NOTE : I unpublished the extension from the Chrome web store, to find out why, check out this [Issue](https://github.com/COUSCOUSZ/BetterGPT/issues/5)
+
+
 - Feel free to contribute. 
 
 - BetterGPT is a chrome extension that aims to UX features to chatGPT.
