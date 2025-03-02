@@ -24,7 +24,7 @@
 - Other features are planned : Bookmarking messages & chats , support for other chatbots like deepseek
 
 # Contributing
-For guidelines on how to contribute, please refer to [CONTRIBUTE.md](contribute.md).
+For guidelines on how to contribute, please refer to [CONTRIBUTE.md](CONTRIBUTE.md).
 
 # Supported websites 
 - ChatGPT
