@@ -1,7 +1,7 @@
 <div align="center">
   <img src="assets/icon.png" alt="BetterGPT Logo" width="64" />
   <h1>BetterGPT</h1>
-  <p>A Chrome extension that enhances ChatGPT's UX</p>
+  <p>A Chrome extension that enhances ChatGPT's and other AI chatbot websites UX</p>
   <img src="md/Preview.png" style="border-radius:16px" >
 </div>
 
