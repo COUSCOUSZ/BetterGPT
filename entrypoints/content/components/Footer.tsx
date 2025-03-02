@@ -1,9 +1,15 @@
-
+import { Target } from "@/entrypoints/content/targets";
 import { FileClock } from "lucide-react"
+import { backgroundStyles } from "../css-variants";
 
-const Footer = () => {
+interface Props{
+    target: Target | undefined;
+}
+
+const Footer = ({target}:Props) => {
+    const bgCSS = target?.cssKey ? backgroundStyles[target.cssKey]:"";
     return (
-        <div className="fixed bg-token-sidebar-surface-primary w-[20rem] bottom-0 flex gap-2 items-center border-t text-token-text-secondary border-token-border-light">
+        <div className={`fixed w-[20rem] bottom-0 flex gap-2 items-center border-t border-[#ffffff1a] text-[#b4b4b4] ${bgCSS}`}>
 
             <div className="flex items-center justify-end gap-6 p-4 w-full">
                 <a href="https://github.com/COUSCOUSZ/BetterGPT/blob/main/CHANGELOG.md" target="_blank">
