@@ -1,5 +1,26 @@
 # Changelog
 
+## v2.0.0
+
+[PR](https://github.com/COUSCOUSZ/BetterGPT/pull/7)
+
+## ✨ Features
+
+- Added support for multiple AI platforms: now works with ChatGPT, Claude, and Gemini
+- Added support to add other AI platforms
+- Enhanced visual design that adapts to each platform's look and feel (dark & light mode still WIP)
+
+### 📝 Documentation
+
+- Added comprehensive contribution guidelines [CONTRIBUTE.md](CONTRIBUTE.md)
+- Updated documentation to make it easier to understand
+
+### 🔧 Under the Hood
+
+- Rebuilt the core architecture
+- Updated all dependencies for better stability
+- Prepared framework for easier addition of future platforms
+
 ## v1.0.4
 
 [PR](https://github.com/COUSCOUSZ/BetterGPT/pull/6)
