@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "@/assets/css/tailwind.css";
 import { EventEmitterProvider } from "./context/EventEmitterContext";
-import targets from "@/targets";
+import targets from "@/entrypoints/content/targets";
 
 export default defineContentScript({
     matches: targets.map((target) => target.url),

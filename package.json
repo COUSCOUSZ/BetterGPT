@@ -2,7 +2,7 @@
   "name": "better-gpt",
   "description": "manifest.json description",
   "private": true,
-  "version": "1.0.2",
+  "version": "2.0",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -30,6 +30,6 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.6.2",
-    "wxt": "^0.19.11"
+    "wxt": "^0.19.27"
   }
 }

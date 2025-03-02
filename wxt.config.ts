@@ -1,5 +1,5 @@
 import { defineConfig } from "wxt";
-import targets from "./targets";
+import targets from "./entrypoints/content/targets";
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
@@ -9,8 +9,8 @@ export default defineConfig({
         name: "Better GPT",
         permissions: ["webRequest"],
         host_permissions: targets.map((target) => target.url),
-        version: "1.0.2",
-        version_name: "v1.0.2",
+        version: "2.0",
+        version_name: "v2.0",
         author: { email: "boussakssoudev@gmail.com" },
         description:
             "BetterGPT enhances the ChatGPT interface by providing improved message organization and navigation features through a custom sidebar",

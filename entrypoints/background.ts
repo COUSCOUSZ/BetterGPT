@@ -1,4 +1,4 @@
-import targets from "@/targets"
+import targets from "@/entrypoints/content/targets"
 
 export default defineBackground({
   main() {

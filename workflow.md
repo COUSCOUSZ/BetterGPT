@@ -22,7 +22,7 @@ This document outlines the workflow of the Chrome extension, detailing the inter
 - **UI Integration**: 
   - Renders the React app, providing the event emitter via context.
 
-## 3. React App (`App.tsx`)
+## 3. React App (`app.tsx`)
 
 - **Sidebar Toggle**: 
   - Manages the state of a sidebar, allowing it to be shown or hidden.
@@ -30,7 +30,7 @@ This document outlines the workflow of the Chrome extension, detailing the inter
 - **Renders Components**: 
   - Includes components like `Sidebar` and `Messages`.
 
-## 4. Messages Component (`Messages.tsx`)
+## 4. Sidebar Component (`sidebar.tsx`)
 
 - **Subscribes to Events**: 
   - Uses `useEffect` to subscribe to the event emitter for new messages.
@@ -52,7 +52,7 @@ This document outlines the workflow of the Chrome extension, detailing the inter
    - Uses the event emitter to broadcast the message to any subscribed listeners.
 
 3. **React Component Updates**:
-   - The `Messages` component, having subscribed to the event emitter, receives the message.
+   - The `Sidebar` component, having subscribed to the event emitter, receives the message.
    - Processes the message, updates its state with new message data, and re-renders the UI.
 
 4. **User Interaction**:
@@ -74,7 +74,7 @@ This document outlines the workflow of the Chrome extension, detailing the inter
 ↓
 [React App]
 ↓
-[Messages Component]
+[Sidebar Component]
 ↓
 [Update State & Render]
 ↓

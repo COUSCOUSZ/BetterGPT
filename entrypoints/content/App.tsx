@@ -21,7 +21,7 @@ const App = () => {
 
     return (
         <>
-            <div className="relative">
+            <div className="relative z-50">
                 {/* sidebar container */}
                 <section id='cmo-sidebar-container' className={`fixed right-0 top-0 ${sidebar ? "w-[20rem]" : "w-0"} h-screen transition-all text-token-text-primary`}> 
                     {/* toggle btn */}

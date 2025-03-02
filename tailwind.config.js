@@ -2,7 +2,9 @@
 export default {
     content: ["assets/**", "entrypoints/**", "components/**"],
     theme: {
-        extend: {},
+        extend: {
+            
+        },
     },
     plugins: [],
 };
