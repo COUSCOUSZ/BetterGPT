@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.0.2
+
+[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/)
+
+### 🩹 Fixes
+
+- Updated the messages selection for chatgpt
+
 ## v2.0.1
 
 [compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/cdb26b71168795999bf1bd4ffae95df25e68f5eb)
