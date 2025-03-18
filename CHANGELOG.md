@@ -10,7 +10,7 @@
 
 ## v2.0.1
 
-[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/cdb26b71168795999bf1bd4ffae95df25e68f5eb)
+[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/299583eec18ca06afd9be2498f68ec1b14970728)
 
 ### 🩹 Fixes
 
