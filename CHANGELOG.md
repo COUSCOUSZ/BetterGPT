@@ -2,7 +2,7 @@
 
 ## v2.1.1
 
-[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/)
+[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/cfd13377440d615c268052b18924010c690fa2e2)
 
 ### ✨ Features
 
