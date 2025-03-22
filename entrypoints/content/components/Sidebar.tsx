@@ -18,6 +18,41 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
     const [target, setTarget] = useState<Target | undefined>(undefined);
     const bgCSS = target?.cssKey ? backgroundStyles[target.cssKey]:"";
     const eventEmitter = useEventEmitter();
+    const [isLoading, setIsLoading] = useState(false);
+
+    const reload = ()=>{
+        const selector = target?.selector;
+        setIsLoading(true);
+        setTimeout(() => {
+            // Find all message elements in ChatGPT's DOM
+            const messagesDOM = selector
+                ? [...document.querySelectorAll(selector)]
+                : [];
+            // console.log(messagesDOM);
+
+            // set data-id attribute to each message element for scrollTo()
+            messagesDOM.forEach((msgDOM, index) => {
+                msgDOM.setAttribute("data-id", index.toString());
+            });
+
+            // Convert DOM elements to message objects
+            if (messagesDOM) {
+                const messages: MessagesType[] = messagesDOM
+                    .map((msg) => ({
+                        id: msg.getAttribute("data-id") || "",
+                        content: msg.textContent,
+                        // short: msg.textContent?.substring(0, 60),
+                    }))
+                    .filter((msg) => msg.content?.trim().length);
+
+                console.log(messages);
+
+                setResponses(messages);
+                setIsLoading(false);
+            }
+        }, 500);
+        
+    }
 
     useEffect(() => {
         console.log("Setting up event listener in React component");
@@ -32,6 +67,7 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
             setTarget(foundTarget);
             const selector = foundTarget?.selector;
 
+            setIsLoading(true);
             setTimeout(() => {
                 // Find all message elements in ChatGPT's DOM
                 const messagesDOM = selector
@@ -57,6 +93,7 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
                     console.log(messages);
 
                     setResponses(messages);
+                    setIsLoading(false);
                 }
             }, 500);
         };
@@ -77,9 +114,9 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
         >
             <div className="mb-16">
                 <Header toggleSidebar={toggleSidebar} />
-                <Messages target={target} responses={responses} />
+                <Messages target={target} responses={responses} isLoading={isLoading} />
             </div>
-            <Footer target={target} />
+            <Footer target={target} reload={reload} isLoading={isLoading} />
         </div>
     );
 };

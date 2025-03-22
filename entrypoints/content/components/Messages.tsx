@@ -6,9 +6,10 @@ import { messageStyles } from "../css-variants";
 interface Props {
     target: Target | undefined;
     responses: MessagesType[];
+    isLoading: boolean;
 }
 
-const Messages = ({ target, responses }: Props) => {
+const Messages = ({ target, responses,isLoading }: Props) => {
     const messageCSS = target?.cssKey ? messageStyles[target.cssKey]:"";
     return (
         <>
@@ -17,7 +18,7 @@ const Messages = ({ target, responses }: Props) => {
                     <div
                         key={response.id}
                         id={response.id}
-                        className={`p-3 rounded-lg m-2 text-sm cursor-pointer ${messageCSS}`}
+                        className={`p-3 rounded-lg m-2 text-sm cursor-pointer ${messageCSS} ${isLoading && "animate-pulse"}`}
                         onClick={() => {
                             scrollTo(response.id);
                         }}

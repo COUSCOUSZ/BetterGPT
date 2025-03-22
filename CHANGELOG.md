@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.1.1
+
+[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/)
+
+### ✨ Features
+
+- Added Reload button incase messages did not load properly or incase the website uses lazy loading
+
 ## v2.1.0
 
 [compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/18ce6c873857d695bd9950f92b3e74e0e4d02b08)
