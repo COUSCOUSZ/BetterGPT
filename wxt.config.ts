@@ -9,8 +9,8 @@ export default defineConfig({
         name: "Better GPT",
         permissions: ["webRequest"],
         host_permissions: targets.map((target) => target.url),
-        version: "2.1.1",
-        version_name: "v2.1.1",
+        version: "2.1.2",
+        version_name: "v2.1.2",
         author: { email: "boussakssoudev@gmail.com" },
         description:
             "BetterGPT enhances the ChatGPT interface by providing improved message organization and navigation features through a custom sidebar",

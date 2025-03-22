@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.1.2
+
+[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/)
+
+### 🩹 Fixes
+
+- Fixed claude message selection 
+
 ## v2.1.1
 
 [compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/cfd13377440d615c268052b18924010c690fa2e2)
