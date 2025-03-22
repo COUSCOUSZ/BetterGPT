@@ -19,5 +19,12 @@
         "url": "https://gemini.google.com/*",
         "urlPatterns": ["*://gemini.google.com/_/BardChatUi/data/*"],
         "selector": ".query-content.ng-star-inserted > span > span > div"
+    },
+    {
+        "title": "Qwen",
+        "cssKey": "qwen",
+        "url": "https://chat.qwen.ai/*",
+        "urlPatterns": ["https://chat.qwen.ai/api/*"],
+        "selector": ".user-message > div > div > div.w-full > div > div > p"
     }
 ]

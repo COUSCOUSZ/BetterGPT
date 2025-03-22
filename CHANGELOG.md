@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.1.0
+
+[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/)
+
+### ✨ Features
+
+- Added support for Qwen
+
 ## v2.0.2
 
 [compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/d375838bc06d77f9422731eb225896cb54ca0317)
