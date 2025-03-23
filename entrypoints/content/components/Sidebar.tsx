@@ -20,8 +20,7 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
     const eventEmitter = useEventEmitter();
     const [isLoading, setIsLoading] = useState(false);
 
-    const reload = ()=>{
-        const selector = target?.selector;
+    const extractMessages =(selector?:string)=>{
         setIsLoading(true);
         setTimeout(() => {
             // Find all message elements in ChatGPT's DOM
@@ -51,7 +50,10 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
                 setIsLoading(false);
             }
         }, 500);
-        
+    }
+
+    const reload = ()=>{
+        extractMessages(target?.selector);
     }
 
     useEffect(() => {
@@ -61,41 +63,13 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
         const handleMessage = (message: any) => {
             console.log("React component received message:", message);
 
+            // Find the target that matches the current URL
             const foundTarget = targets.find((target) =>
                 isUrlMatching(message.data.url, target.urlPatterns)
             );
             setTarget(foundTarget);
-            const selector = foundTarget?.selector;
 
-            setIsLoading(true);
-            setTimeout(() => {
-                // Find all message elements in ChatGPT's DOM
-                const messagesDOM = selector
-                    ? [...document.querySelectorAll(selector)]
-                    : [];
-                // console.log(messagesDOM);
-
-                // set data-id attribute to each message element for scrollTo()
-                messagesDOM.forEach((msgDOM, index) => {
-                    msgDOM.setAttribute("data-id", index.toString());
-                });
-
-                // Convert DOM elements to message objects
-                if (messagesDOM) {
-                    const messages: MessagesType[] = messagesDOM
-                        .map((msg) => ({
-                            id: msg.getAttribute("data-id") || "",
-                            content: msg.textContent,
-                            // short: msg.textContent?.substring(0, 60),
-                        }))
-                        .filter((msg) => msg.content?.trim().length);
-
-                    console.log(messages);
-
-                    setResponses(messages);
-                    setIsLoading(false);
-                }
-            }, 500);
+            extractMessages(foundTarget?.selector);
         };
 
         // Subscribe to events and cleanup on unmount
@@ -105,6 +79,7 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
             unsubscribe();
         };
     }, [eventEmitter]);
+    
 
     return (
         <div
