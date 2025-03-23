@@ -2,9 +2,9 @@
 
 ## v2.1.3
 
-[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/)
+[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/6c52d40b6596cf3efac887e214f259553464e6b4)
 
-### 🩹 Fixes
+### 🔧 Optimization
 
 - Small optimization / Paying off for being lazy
 
