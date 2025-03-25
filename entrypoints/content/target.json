@@ -11,7 +11,7 @@
         "cssKey": "claude",
         "url": "https://claude.ai/*",
         "urlPatterns": ["*://claude.ai/api*"],
-        "selector": "body > div.flex.min-h-screen.w-full > div > div > div.relative.flex.w-full.flex-1.overflow-x-hidden.overflow-y-scroll.pt-6.md\\:pr-8 > div.relative.mx-auto.flex.h-full.w-full.max-w-3xl.flex-1.flex-col.md\\:px-2 > div.flex-1.flex.flex-col.gap-3.px-4.max-w-3xl.mx-auto.w-full.pt-1 div > div > div.flex.flex-row.gap-2 .whitespace-pre-wrap.break-words"
+        "selector": "body > div.flex.min-h-screen.w-full > div > div > div.relative.flex.w-full.flex-1.overflow-x-hidden.overflow-y-scroll.pt-6.md\\:pr-8 > div.relative.mx-auto.flex.h-full.w-full.max-w-3xl.flex-1.flex-col.md\\:px-2 > div.flex-1.flex.flex-col.gap-3.px-4.max-w-3xl.mx-auto.w-full.pt-1 div > div > div.flex.flex-row.gap-2 div[data-testid=user-message]"
     },
     {
         "title": "Gemini",
