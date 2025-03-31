@@ -16,17 +16,15 @@ interface Props {
 const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
     const [responses, setResponses] = useState<MessagesType[]>([]);
     const [target, setTarget] = useState<Target | undefined>(undefined);
-    const bgCSS = target?.cssKey ? backgroundStyles[target.cssKey]:"";
+    const bgCSS = target?.cssKey ? backgroundStyles[target.cssKey] : "";
     const eventEmitter = useEventEmitter();
     const [isLoading, setIsLoading] = useState(false);
 
-    const extractMessages =(selector?:string)=>{
+    const extractMessages = (selector?: string) => {
         setIsLoading(true);
         setTimeout(() => {
             // Find all message elements in ChatGPT's DOM
-            const messagesDOM = selector
-                ? [...document.querySelectorAll(selector)]
-                : [];
+            const messagesDOM = selector ? [...document.querySelectorAll(selector)] : [];
             // console.log(messagesDOM);
 
             // set data-id attribute to each message element for scrollTo()
@@ -50,25 +48,55 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
                 setIsLoading(false);
             }
         }, 500);
-    }
+    };
 
-    const reload = ()=>{
+    const reload = () => {
+        console.log(target);
+        
         extractMessages(target?.selector);
-    }
+    };
+
+    useEffect(() => {
+        console.log("Target state updated:", target);
+    }, [target]); 
 
     useEffect(() => {
         console.log("Setting up event listener in React component");
 
+        const fetchRemoteTargets = async (): Promise<Target[]> => {
+            console.warn("Fetching remote targets...");
+            try {
+                const response = await fetch(
+                    "https://raw.githubusercontent.com/COUSCOUSZ/BetterGPT/refs/heads/main/entrypoints/content/target.json"
+                );
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch targets: ${response.statusText}`);
+                }
+                const remoteTargets = await response.json();
+                return remoteTargets;
+            } catch (error) {
+                console.error("Error fetching remote targets:", error);
+                return [];
+            }
+        };
+
         // HandleMessage runs when an event is emitted
-        const handleMessage = (message: any) => {
+        const handleMessage = async (message: any) => {
             console.log("React component received message:", message);
+            // If the target is already set, no need to fetch again
+            if (target) {
+                extractMessages(target.selector);
+                return;
+            }
 
-            // Find the target that matches the current URL
-            const foundTarget = targets.find((target) =>
-                isUrlMatching(message.data.url, target.urlPatterns)
-            );
+            const remoteTargets = await fetchRemoteTargets();
+            // Find the target that matches the current URL from the remote OR local as fallback
+            const foundTarget =
+                remoteTargets.find((target) =>
+                    isUrlMatching(message.data.url, target.urlPatterns)
+                ) || targets.find((target) => isUrlMatching(message.data.url, target.urlPatterns));
+
             setTarget(foundTarget);
-
             extractMessages(foundTarget?.selector);
         };
 
@@ -76,10 +104,10 @@ const Sidebar = ({ sidebar, toggleSidebar }: Props) => {
         const unsubscribe = eventEmitter.subscribe(handleMessage);
 
         return () => {
+            console.warn("Cleaning up event listener...");
             unsubscribe();
         };
     }, [eventEmitter]);
-    
 
     return (
         <div
