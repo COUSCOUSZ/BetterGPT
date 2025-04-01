@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.1.5
+
+[compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/)
+
+### ♻️ Update
+
+- Updated claude message selection.
+  
 ## v2.1.4
 
 [compare changes](https://github.com/COUSCOUSZ/BetterGPT/commit/df3573a49766325f19b758ef49cb5a0936bc7141)
