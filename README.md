@@ -1,3 +1,5 @@
+
+
 <div align="center">
   <img src="assets/icon.png" alt="BetterGPT Logo" width="64" />
   <h1>BetterGPT</h1>
@@ -30,5 +32,4 @@ For guidelines on how to contribute, please refer to [CONTRIBUTE.md](CONTRIBUTE.
 - ChatGPT
 - Claude 
 - Gemini
-
-
+- Qwen
